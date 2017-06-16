@@ -6,12 +6,12 @@ RUN go get -u github.com/kardianos/govendor
 RUN go get github.com/onsi/ginkgo/ginkgo
 RUN go get github.com/onsi/gomega
 
-# add the current banku dir
+# add the current ctgaccounts dir
 ADD . /go/src/banku
 WORKDIR /go/src/banku
 
 # installing the dependency
 RUN govendor sync
 
-# run with: docker build -t banku .
-# connect: docker run -i -t banku /bin/bash
+# run with: docker build -t ctgaccounts .
+# connect: docker run -i -t ctgaccounts /bin/bash

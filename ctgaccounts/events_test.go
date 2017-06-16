@@ -14,7 +14,7 @@ var _ = Describe("Event", func() {
 
 	Describe("NewCreateAccountEvent", func() {
 		It("can create a create account event", func() {
-			name := "John Smith"
+			name := "Sara Taha"
 
 			event := NewCreateAccountEvent(name)
 
@@ -24,34 +24,13 @@ var _ = Describe("Event", func() {
 		})
 	})
 
-	Describe("NewDepositEvent", func() {
-		It("can create a deposit event", func() {
+	Describe("NewPaymentEvent", func() {
+		It("can create a payment event", func() {
 			event := NewDepositEvent(accId, amount)
 
 			Expect(event.AccId).To(Equal(accId))
 			Expect(event.Amount).To(Equal(amount))
-			Expect(event.Type).To(Equal("DepositEvent"))
-		})
-	})
-
-	Describe("NewWithdrawEvent", func() {
-		It("can create a withdrawal event", func() {
-			event := NewWithdrawEvent(accId, amount)
-
-			Expect(event.AccId).To(Equal(accId))
-			Expect(event.Amount).To(Equal(amount))
-			Expect(event.Type).To(Equal("WithdrawEvent"))
-		})
-	})
-
-	Describe("NewTransferEvent", func() {
-		It("can create a transfer event", func() {
-			event := NewTransferEvent(accId, "T0", amount)
-
-			Expect(event.AccId).To(Equal(accId))
-			Expect(event.Amount).To(Equal(amount))
-			Expect(event.TargetId).To(Equal("T0"))
-			Expect(event.Type).To(Equal("TransferEvent"))
+			Expect(event.Type).To(Equal("PaymentEvent"))
 		})
 	})
 })

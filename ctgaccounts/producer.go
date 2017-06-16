@@ -30,7 +30,7 @@ func mainProducer() {
 			} else {
 				fmt.Println("Only specify create###Account Name")
 			}
-		case "deposit":
+		case "payment":
 			if len(args) == 3 {
 				accId := args[1]
 				if amount, err := strconv.Atoi(args[2]); err == nil {
@@ -38,31 +38,10 @@ func mainProducer() {
 					sendMsg(kafka, event)
 				}
 			} else {
-				fmt.Println("Only specify deposit###Account ID###amount")
-			}
-		case "withdraw":
-			if len(args) == 3 {
-				accId := args[1]
-				if amount, err := strconv.Atoi(args[2]); err == nil {
-					event := NewWithdrawEvent(accId, amount)
-					sendMsg(kafka, event)
-				}
-			} else {
-				fmt.Println("Only specify withdraw###Account ID###amount")
-			}
-		case "transfer":
-			if len(args) == 4 {
-				sourceId := args[1]
-				targetId := args[2]
-				if amount, err := strconv.Atoi(args[3]); err == nil {
-					event := NewTransferEvent(sourceId, targetId, amount)
-					sendMsg(kafka, event)
-				}
-			} else {
-				fmt.Println("Only specify transfer###Source ID###Target ID####amount")
+				fmt.Println("Only specify payment###Account ID###amount")
 			}
 		default:
-			fmt.Printf("Unknown command %s, only: create, deposit, withdraw, transfer\n", cmd)
+			fmt.Printf("Unknown command %s, only: create, payment\n", cmd)
 		}
 
 		if err != nil {

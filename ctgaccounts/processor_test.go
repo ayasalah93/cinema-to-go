@@ -8,7 +8,7 @@ import (
 
 var _ = Describe("Event processor", func() {
 	var (
-		name = "John Smith"
+		name = "Sara Taha"
 	)
 
 	Describe("NewCreateAccountEvent", func() {
@@ -21,8 +21,8 @@ var _ = Describe("Event processor", func() {
 		})
 	})
 
-	Describe("NewDepositEvent", func() {
-		It("can deposit to an account", func() {
+	Describe("NewPaymentEvent", func() {
+		It("can do payment to an account", func() {
 			acc, _ := NewCreateAccountEvent(name).Process()
 
 			acc, _ = NewDepositEvent(acc.Id, 20).Process()
@@ -30,59 +30,6 @@ var _ = Describe("Event processor", func() {
 
 			Expect(err).To(BeNil())
 			Expect(acc.Balance).To(Equal(45))
-		})
-	})
-
-	Describe("NewWithdrawEvent", func() {
-		var acc *CinemaAccount
-
-		BeforeEach(func() {
-			acc, _ = NewCreateAccountEvent(name).Process()
-			acc, _ = NewDepositEvent(acc.Id, 20).Process()
-		})
-
-		It("can withdraw money from an account with sufficient balance", func() {
-			acc, err := NewWithdrawEvent(acc.Id, 30).Process()
-
-			Expect(err).NotTo(BeNil())
-			Expect(acc).To(BeNil())
-		})
-
-		It("can withdraw money from an account with sufficient balance", func() {
-			acc, _ = NewWithdrawEvent(acc.Id, 5).Process()
-			acc, _ = NewWithdrawEvent(acc.Id, 2).Process()
-
-			Expect(acc.Balance).To(Equal(13))
-		})
-	})
-
-	Describe("NewTransferEvent", func() {
-		var accAdam, accNatan *CinemaAccount
-
-		BeforeEach(func() {
-			accAdam, _ = NewCreateAccountEvent("Adam Smith").Process()
-			accNatan, _ = NewCreateAccountEvent("Natan Newstaff").Process()
-			accAdam, _ = NewDepositEvent(accAdam.Id, 50).Process()
-			accNatan, _ = NewDepositEvent(accNatan.Id, 100).Process()
-		})
-
-		It("can transfer when amount is sufficient", func() {
-			NewTransferEvent(accNatan.Id, accAdam.Id, 30).Process()
-
-			accAdam, _ = FetchAccount(accAdam.Id)
-			accNatan, _ = FetchAccount(accNatan.Id)
-			Expect(accAdam.Balance).To(Equal(80))
-			Expect(accNatan.Balance).To(Equal(70))
-		})
-
-		It("cannot transfer when insufficient amount", func() {
-			_, err := NewTransferEvent(accNatan.Id, accAdam.Id, 150).Process()
-
-			accAdam, _ = FetchAccount(accAdam.Id)
-			accNatan, _ = FetchAccount(accNatan.Id)
-			Expect(accAdam.Balance).To(Equal(50))
-			Expect(accNatan.Balance).To(Equal(100))
-			Expect(err).NotTo(BeNil())
 		})
 	})
 })

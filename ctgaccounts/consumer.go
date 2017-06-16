@@ -52,24 +52,10 @@ func consumeEvents(consumer sarama.PartitionConsumer) {
 					if err = json.Unmarshal(msgVal, &event); err == nil {
 						CinemaAccount, err = event.Process()
 					}
-				case "DepositEvent":
-					event := new(DepositEvent)
+				case "PaymentEvent":
+					event := new(PaymentEvent)
 					if err = json.Unmarshal(msgVal, &event); err == nil {
 						CinemaAccount, err = event.Process()
-					}
-				case "WithdrawEvent":
-					event := new(WithdrawEvent)
-					if err = json.Unmarshal(msgVal, &event); err == nil {
-						CinemaAccount, err = event.Process()
-					}
-				case "TransferEvent":
-					event := new(TransferEvent)
-					if err = json.Unmarshal(msgVal, &event); err == nil {
-						if CinemaAccount, err = event.Process(); err == nil {
-							if targetAcc, err := FetchAccount(event.TargetId); err == nil {
-								fmt.Printf("%+v\n", *targetAcc)
-							}
-						}
 					}
 				default:
 					fmt.Println("Unknown command: ", logType)
