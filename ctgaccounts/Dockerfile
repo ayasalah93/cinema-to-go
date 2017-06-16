@@ -7,8 +7,8 @@ RUN go get github.com/onsi/ginkgo/ginkgo
 RUN go get github.com/onsi/gomega
 
 # add the current ctgaccounts dir
-ADD . /go/src/banku
-WORKDIR /go/src/banku
+ADD . /go/src/ctgaccounts
+WORKDIR /go/src/ctgaccounts
 
 # installing the dependency
 RUN govendor sync
