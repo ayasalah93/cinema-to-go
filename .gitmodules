@@ -1,0 +1,18 @@
+[submodule "backup"]
+	path = backup
+	url = https://github.com/sarataha/backup.git
+[submodule "bookings"]
+	path = bookings
+	url = https://github.com/sarataha/bookings.git
+[submodule "movies"]
+	path = movies
+	url = https://github.com/sarataha/movies.git
+[submodule "ctgaccounts"]
+	path = ctgaccounts
+	url = https://github.com/sarataha/ctgaccounts.git
+[submodule "showtimes"]
+	path = showtimes
+	url = https://github.com/sarataha/showtimes.git
+[submodule "users"]
+	path = users
+	url = https://github.com/sarataha/users.git
