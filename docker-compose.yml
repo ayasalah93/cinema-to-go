@@ -64,15 +64,15 @@ services:
     volumes:
       - ./backup:/backup:rw
 
-  app:
-    build: ./ctgaccounts
-    working_dir: /go/src/ctgaccounts
-    links:
-      - redis
-    environment:
-      REDIS_URL: redis:6379
+  # app:
+  #   build: ./ctgaccounts
+  #   working_dir: /go/src/ctgaccounts
+  #   links:
+  #     - redis
+  #   environment:
+  #     REDIS_URL: redis:6379
 
-  redis:
-    image: redis:alpine
+  # redis:
+  #   image: redis:alpine
 
 # docker-compose run app ginkgo

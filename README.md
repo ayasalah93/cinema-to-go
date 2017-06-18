@@ -22,6 +22,13 @@ Add the following line in your `/etc/hosts` file:
 127.0.0.1   movies.local bookings.local users.local showtimes.local
 ```
 
+To clone the repo with the submodules
+======================================
+
+```
+git clone --recursive -j8 https://github.com/sarataha/cinema-to-go.git
+```
+
 Starting services
 ==============================
 
@@ -68,7 +75,7 @@ exit
 Documentation
 ==============================
 
-Asynchronous services
+Synchronous services
 ==============================
 
 ## User Service
@@ -113,7 +120,7 @@ A service that's used to lookup booking information for users.
 * POST - http://bookings.local/bookings : Create booking
 
 
-Synchronous services
+Asynchronous services
 ==============================
 
 1. Install Go
