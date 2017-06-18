@@ -68,6 +68,9 @@ exit
 Documentation
 ==============================
 
+Asynchronous services
+==============================
+
 ## User Service
 
 A service that's used to return information about the users of Cinema to Go.
@@ -108,3 +111,18 @@ A service that's used to lookup booking information for users.
 
 * GET - http://bookings.local/bookings : Get all bookings
 * POST - http://bookings.local/bookings : Create booking
+
+
+Synchronous services
+==============================
+
+1. Install Go
+2. Install Kafka
+3. Install govendor
+4. Run `govendor sync`
+5. Run `go build && ./ctgaccounts/ctgaccounts --act=consumer` to run the program as consumer
+6. Run `go build && ./ctgaccounts/ctgaccounts` to run the program as producer
+
+To run testing:
+
+    docker-compose run app ginkgo
