@@ -15,10 +15,10 @@
     }
 
      stage('Test image') {
-        app.inside {
+        
 	   echo "tests passed"
        /*     sh 'curl http://http://ec2-34-211-62-126.us-west-2.compute.amazonaws.com:80 || exit 1'*/
-        }
+        
     }   
 
     stage('Push image') {
