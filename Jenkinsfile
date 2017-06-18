@@ -9,7 +9,7 @@
  	
 	sh 'docker-compose up -d'
 
- //       app = docker.build("aboubakr/movies")
+ /*       app = docker.build("aboubakr/movies")*/
 
 
     }
