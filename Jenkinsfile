@@ -27,6 +27,7 @@
    docker.withRegistry("https://registry.hub.docker.com", 'docker-hub-credential') {
 
           app.push("${env.BUILD_NUMBER}")
+	  app.push (34)	
 /*	app.push("cinema/movies")*/
 	   app.push("latest") 
             
