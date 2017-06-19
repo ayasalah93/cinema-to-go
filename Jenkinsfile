@@ -8,7 +8,7 @@
     stage('Build image') {
  	
 	sh 'docker-compose up -d'
-
+	sh 'echo "${env.BUILD.NUMBER}"'
  /*       app = docker.build("aboubakr/movies")*/
 
 
